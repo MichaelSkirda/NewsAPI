@@ -11,9 +11,11 @@ namespace NewsAPI.Controllers
     public class PostController : ControllerBase
     {
 
-        private PostService service;
+        private IPostService service;
+        private readonly int GetLastPostsCount = 20;
 
-        public PostController(PostService service)
+
+        public PostController(IPostService service)
         {
             this.service = service;
         }
@@ -21,18 +23,13 @@ namespace NewsAPI.Controllers
         [HttpGet]
         public List<Post> Get()
         {
-            return service.GetLastPosts();
+            return service.GetLastPosts(GetLastPostsCount);
         }
 
         [HttpGet("{substring}")]
         public List<Post> Get(string substring)
         {
             return service.GetPostByTitleSubstring(substring);
-        }
-
-        [HttpPost]
-        public void Post([FromBody] Post post)
-        {
         }
 
 

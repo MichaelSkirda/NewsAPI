@@ -6,31 +6,26 @@ namespace NewsAPI.Database
     public class ApplicationContext : DbContext
     {
         public DbSet<Post> Posts { get; set; }
+        public DbSet<NewsSource> NewsSources { get; set; }
 
         public ApplicationContext(DbContextOptions<ApplicationContext> options)
             : base(options)
         {
             if(Database.EnsureCreated())
             {
-                Posts.Add(new Post()
+                // В качестве примера требуется подключить 2 любых новостных сайта на выбор.
+                // При помощи NewSource/Post пользователь может добавить RSS другого сайта на свой выбор
+                // Изначательно в базе уже есть эти 2 сайта
+                NewsSources.Add(new NewsSource()
                 {
-                    Title = "Test post 1",
-                    Content = "Some test to test app",
-                    CreatedDate = DateTime.Now.AddDays(-3)
+                    Name = "Russia Today",
+                    RssURL = "https://www.rt.com/rss/russia/"
                 });
 
-                Posts.Add(new Post()
+                NewsSources.Add(new NewsSource()
                 {
-                    Title = "Another one post",
-                    Content = "Some test to test app, hello world",
-                    CreatedDate = DateTime.Now.AddDays(-2)
-                });
-
-                Posts.Add(new Post()
-                {
-                    Title = "Test post 3",
-                    Content = "Some test to test application",
-                    CreatedDate = DateTime.Now.AddHours(-3)
+                    Name = "Lenta",
+                    RssURL = "https://lenta.ru/rss/news"
                 });
 
                 SaveChanges();

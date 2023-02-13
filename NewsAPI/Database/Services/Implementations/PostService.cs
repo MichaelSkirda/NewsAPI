@@ -1,21 +1,19 @@
 ﻿using NewsAPI.Models;
 
-namespace NewsAPI.Database.Services
+namespace NewsAPI.Database.Services.Implementations
 {
-    public class PostService
+    public class PostService : IPostService
     {
-
         private ApplicationContext db { get; set; }
-        private readonly int GetLastPostsCount = 10;
 
         public PostService(ApplicationContext db)
         {
             this.db = db;
         }
 
-        public List<Post> GetLastPosts()
+        public List<Post> GetLastPosts(int count)
         {
-            return db.Posts.OrderByDescending(p => p.CreatedDate).Take(GetLastPostsCount).ToList();
+            return db.Posts.OrderByDescending(p => p.CreatedDate).Take(count).ToList();
         }
 
 
