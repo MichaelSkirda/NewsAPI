@@ -17,12 +17,21 @@ namespace NewsAPI.Controllers
             this.service = service;
         }
 
+        /// <summary>
+        /// Возвращает список всех сайтов, с которых берутся новости
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public List<NewsSource> Get()
         {
             return service.GetAllNewsSources();
         }
 
+        /// <summary>
+        /// Добавляет сайт в список сайтов для парсинга новостей. Парсинг происходит раз в минуту.
+        /// </summary>
+        /// <param name="newsSource"></param>
+        /// <returns></returns>
         [HttpPost]
         public IActionResult Post([FromBody] NewsSource newsSource)
         {

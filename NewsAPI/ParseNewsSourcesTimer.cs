@@ -19,7 +19,17 @@ namespace NewsAPI
 
             foreach (NewsSource newsSource in newsSources)
             {
-                XmlReader reader = XmlReader.Create(newsSource.RssURL);
+                XmlReader reader;
+
+                try
+                {
+                    reader = XmlReader.Create(newsSource.RssURL);
+                }
+                catch
+                {
+                    continue;
+                }
+
                 SyndicationFeed feed = SyndicationFeed.Load(reader);
                 reader.Close();
                 foreach (SyndicationItem item in feed.Items)
