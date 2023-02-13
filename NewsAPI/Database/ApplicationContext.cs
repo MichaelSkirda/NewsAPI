@@ -25,8 +25,8 @@ namespace NewsAPI.Database
 
                 NewsSources.Add(new NewsSource()
                 {
-                    Name = "Habr Development",
-                    RssURL = "https://habr.com/ru/rss/flows/develop/all/?fl=ru&limit=100"
+                    Name = "ТАСС Новости",
+                    RssURL = "https://tass.ru/rss/v2.xml"
                 });
 
                 SaveChanges();

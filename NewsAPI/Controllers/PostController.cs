@@ -12,7 +12,7 @@ namespace NewsAPI.Controllers
     {
 
         private IPostService service;
-        private readonly int GetLastPostsCount = 20;
+        private readonly int GetLastPostsCount = 150;
 
 
         public PostController(IPostService service)
