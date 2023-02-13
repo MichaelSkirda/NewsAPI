@@ -16,16 +16,17 @@ namespace NewsAPI.Database
                 // В качестве примера требуется подключить 2 любых новостных сайта на выбор.
                 // При помощи NewSource/Post пользователь может добавить RSS другого сайта на свой выбор
                 // Изначательно в базе уже есть эти 2 сайта
-                NewsSources.Add(new NewsSource()
-                {
-                    Name = "Russia Today",
-                    RssURL = "https://www.rt.com/rss/russia/"
-                });
 
                 NewsSources.Add(new NewsSource()
                 {
                     Name = "Lenta",
                     RssURL = "https://lenta.ru/rss/news"
+                });
+
+                NewsSources.Add(new NewsSource()
+                {
+                    Name = "Habr Development",
+                    RssURL = "https://habr.com/ru/rss/flows/develop/all/?fl=ru&limit=100"
                 });
 
                 SaveChanges();
